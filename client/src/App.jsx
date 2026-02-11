@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import Ticket from './components/Ticket';
 import Board from './components/Board';
 
-const socket = io('http://localhost:3000', { autoConnect: false });
+const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:3000', { autoConnect: false });
 
 const COLOR_OPTIONS = [
   { id: 'red', name: 'Đỏ', hex: '#DC2626' },
