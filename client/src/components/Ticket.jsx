@@ -34,11 +34,9 @@ const Ticket = ({ ticketData, calledNumbers = [], onNumberClick, color = 'pink',
                 {ticketData.map((row, rowIndex) => {
                     // Check waiting row: count non-zero numbers that are called
                     const rowNums = row.filter(n => n !== 0);
-                    const calledCount = rowNums.filter(n => calledNumbers.includes(num)).length; // Bug in thought: num is undefined here. FIX: calledNumbers.includes(n)
-                    // Wait, calledNumbers.includes(n).
-                    // Correct logic:
+                    // Count how many numbers in this row are called
                     const matchCount = rowNums.filter(n => calledNumbers.includes(n)).length;
-                    const isWaiting = matchCount === 4 && rowNums.length === 5; // Should be 5 normally.
+                    const isWaiting = matchCount === 4 && rowNums.length === 5;
 
                     return (
                         <div key={rowIndex} className={`grid grid-cols-9 gap-[2px] mb-[2px] rounded transition-all duration-300 ${isWaiting ? 'ring-2 ring-yellow-400 bg-yellow-100 shadow-inner animate-pulse' : ''}`}>
